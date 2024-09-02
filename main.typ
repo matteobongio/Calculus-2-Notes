@@ -111,3 +111,13 @@ if $overline(y)$ turns $F$ into identity
 
 REMARK: General Solution: Finding some/all solutions of $cal(E) = {F = 0}$ is called integration
 ])
+
+#Examplebox([
+$
+cal(E) = {y' - 3x^2 = 0}\
+y' = 3x^2 \
+therefore y = x^3 + C \
+forall C, "it is a solution of " cal(E)
+$
+
+])
