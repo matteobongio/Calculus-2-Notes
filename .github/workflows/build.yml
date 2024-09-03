@@ -28,7 +28,6 @@ jobs:
       - uses: typst-community/setup-typst@v3
       # Runs a single command using the runners shell
       - run: typst compile main.typ main.pdf
-      - name: clean all releases
       - name: upload latest
       - uses: svenstaro/upload-release-action@v2
         with:
