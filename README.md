@@ -2,4 +2,4 @@
 
 ## To download the pdf:
 
-go to the [actions](https://github.com/matteobongio/Calculus-2-Notes/actions) page, click on the latest sucessfull build, under "artifacts" click "paper"
+go to releases, download the latest version
