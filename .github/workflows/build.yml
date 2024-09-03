@@ -27,6 +27,9 @@ jobs:
       - uses: typst-community/setup-typst@v3
       # Runs a single command using the runners shell
       - run: typst compile main.typ main.pdf
+      - uses: sgpublic/delete-release-action@v1.1
+        with:
+          release-keep-count: -1
       - uses: svenstaro/upload-release-action@v2
         with:
           file: main.pdf
