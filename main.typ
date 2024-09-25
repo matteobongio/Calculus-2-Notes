@@ -320,3 +320,112 @@ $
   Moreover, this integer curve does extend up to the boundry $diff D$.
 ])
 
+#table(columns: (auto, auto, auto, auto, auto),
+table.header([], [Stewart], [Demidouich], [Filippou], [Elsholtz]),
+[Ode, Direction field], [IX.2], [IX.1 exercise 2704], [1 exercise 1], [I.1],
+[Cauchy 1st], [], [IX 2 exercise 2733], [1 exemple 35], [I.6],
+[Seperable equidimensional], [IX.3], [IX.3 exercise 2742 \ exercise 2768], [2 exercise 51 \ 4 exercise 101], [I.2 \ I.3],
+[Linear variation of constants \ Bernoulli], [IX.5 \ (exercise 27-29)], [5 exerceise 2792 \ + IX.9], [6 exercise 186 \ 9 exercise 301], [I.5]
+)
+
+= Lecture 3: Solving 1sr order ODE
+
+== Seperable ODE
+#let arrv = $arrow(v)$
+#Examplebox([
+  $ arrv (x, y) = x (x, y) arrow(e)_x + y (x, y) arrow(e)_y \
+    cases(
+    arrow.r arrow(e)_x: frac(d x, d t) = x,
+    arrow.t arrow(e)_y: frac(d y, d t) = y,
+    ) \
+    t = "time"
+  $
+])
+1. Express $d("time")$
+  $ ""^ast.basic integral d t = integral frac(d x, X(x)) =
+  integral frac(d y, Y(y)) } Phi(x, y, "const" = \"C\") = 0 -> y = t(x, "const") $
+  $""^ast.basic$ Time to get from start to end point
+2. $frac(frac(d y, d t), frac(d x, d t)) = frac(Y(y), X(x)) = frac(d y, d x) = y'(x) } epsilon$
+
+  Steps to solve:
+  1. Bring $d x$ and all $x$ left
+  2. Bring $d y$ and all $y$ right
+  3. Integrate both sides
+  4. Do not forget $C$
+  In steps 1 and 2, when dividing, we can't divide by 0, do not discard those solutions.
+#Examplebox([
+  $
+    epsilon = {y' = x y^2} \
+    frac(d y, d x) = x y^2 quad frac(d y, y^2) = x d x \
+    cases(
+      y = 0 -> d y = 0 => y = 0 "is a solution",
+      y eq.not 0 -> integral frac(d y, y^2) = integral x d x => 1/y = 1/2 x^2 + C
+    )
+  $
+  Inspect if $y = 0$ fits into $y(x; C)$ as a limit case
+])
+
+== Equidimensional Euler's scaling homogeneous
+#set math.cases(reverse: true)
+#columns( [
+  $
+  cases(
+    epsilon = {y' = f(b/x)},
+    f(x, y) = f(k x, k y),
+    "solving: New" z = frac(y(x), x)
+    )
+  $
+#colbreak()
+  $ &y(x) = x z(x)\
+  &y'(x) = z + x z' \ 
+  &epsilon = {z + x z' = f(z)} ; x z' = f(z) - z
+  $
+],
+gutter: 2%
+)
+#set math.cases(reverse: false)
+$
+  cases(
+    x = 0 -> epsilon = {z' = frac(f(z) - z, x)},
+    f(z) - z = 0 -> {integral frac(d z, f(z) - z) = integral frac(d x, x) = Phi (x, z; C) =>
+      z = (x, C) => y (x, C) = x z (x, C)
+    }
+  )
+$
+
+#Examplebox([
+  $
+    epsilon = {y' = frac(x^2 y^2, 2 x y)} x eq.not 0, y eq.not 0
+  $
+  Divide both sidees by $x^2$
+  $ 
+    frac(1 + (y / x)^2, 2 (y/ x)) = frac(1 + z^2, 2z)
+  $
+])
+
+== Linear ODEs of first order
+$
+  L[y(z)] = "RHS" (x)
+$
+L is a polynomial in $d/(d x)$
+${a_0 (x) y'(x) + a_1 (x) y (x) = f(x)}$ where $a_0, a_1, f$ are given in $f n$
+
+Suppose $a_0 (x) eq.not forall x in [a, b] subset RR$
+$ epsilon = {y' + p(x) y = q(x)} $
+
+#DefBox([
+  $epsilon$ is homogeneous if $f = 0 (=> q equiv 0)$
+  Else $(f equiv.not 0, q equiv.not 0) ->$ non-homogeneous
+  #Examplebox([
+    $epsilon = {y' + x^2 y = 0}$ homogeneous, linear 1st order ODE
+    if $f equiv 0 or q equiv 0$ the equation is seperable
+  ])
+])
+
+Extra Exercises
+#set enum(numbering: "a)")
++ $(1 + (y')^2 + x^2 y = 0) ->$ Non-linear
++ $b' + x^2 y^2 = 0 ->$ Linear, homogeneous
++ $y' - 2 x y = 1 + x ->$ Linear, non-homogeneous
++ $y' - 2 x y = 1 + y ->$ Linear, non-homogeneous
++ $y' - 2 x y = 1 + x + y^2 ->$ non-linear
