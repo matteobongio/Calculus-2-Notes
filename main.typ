@@ -1,5 +1,6 @@
 #import "@preview/showybox:2.0.1": showybox
 #import "@preview/cetz:0.2.2"
+#import "@preview/pinit:0.2.0": *
 
 #let bluebox(title, text, ..opts) = {
   showybox(
@@ -429,3 +430,33 @@ Extra Exercises
 + $y' - 2 x y = 1 + x ->$ Linear, non-homogeneous
 + $y' - 2 x y = 1 + y ->$ Linear, non-homogeneous
 + $y' - 2 x y = 1 + x + y^2 ->$ non-linear
+
+= Lecture 4 Linear ODE
+
++ Method of variation of constsants
+  when ord$(epsilon) = n = 1$
+  $
+    &epsilon = {y' + p(x) y = q(x)}\
+    &y(x) = C(x)  underbrace(b_0(x), "c = 1")#pin(1)
+  $
+  #pinit-point-from(1)["Solution of" epsilon_0 = {"LHS" = 0})]
+  #set math.cases(reverse: true)
+  $
+    "plug" y(x) \
+    y' = C'(x) underbrace(b_0, c = 1)  + C underbrace(b'_0, c = 1)\
+    y'_0 + p(x) y_0 = 0\
+    ("Const" y_0') + p(x) ("Const" y_0) = 0\
+    c' y_0 + C (y'_0 + p(x) y_0) = C'(x) y^((c = 1))_0 + C(x) y'_0 + p(x) c(x) y_0 = q(x) \
+    cases(
+    c'(x) y_0(x) = 1(x) -> "new equation",
+    c(x) = integral frac(q(x), y_0(n)) + "const"
+    )
+    y(x_1, C_1) = lr([integral frac(q(x), y_0(x)) dx + C_1] y_0(x)
+  $
+  #set math.cases(reverse: false)
+  write down formula of $y_0(x)$
+  $
+    frac(d y_0, d x) + p(x) y_0 = 0 -> integral frac(d y_0, y_0) = - integral p(x) d x \
+    "Express" y_0
+  $
+
