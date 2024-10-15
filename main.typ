@@ -451,7 +451,7 @@ Extra Exercises
     c'(x) y_0(x) = 1(x) -> "new equation",
     c(x) = integral frac(q(x), y_0(n)) + "const"
     )
-    y(x_1, C_1) = lr([integral frac(q(x), y_0(x)) dx + C_1] y_0(x)
+    y(x_1, C_1) = [integral frac(q(x), y_0(x)) d x + C_1] y_0(x)
   $
   #set math.cases(reverse: false)
   write down formula of $y_0(x)$
@@ -460,3 +460,68 @@ Extra Exercises
     "Express" y_0
   $
 
+  #Examplebox([
+    $ epsilon = { y' + 4 x y = 2 x} $
+    === Steps
+    #set enum(numbering : "1")
+    +
+      $ 
+        y' + 4 x y = 0 \
+        cases(
+          y != 0 =>
+          ln | y | = - 2 x^2 + accent(C, tilde) 
+          => y = plus.minus e^(-2x^2) e^(accent(C, tilde))
+          ,
+          y = 0 => frac(d y, d x) = - 4 x y
+            => c = e^epsilon or 0
+        )
+        "General Solution": y_0 = C e^(-2x^2) 
+      $
+    + 
+      $
+        C'(x) e^(-2x^2) = 2x\
+        C'(x) = 2x e^(2x^2)\
+        "particular solution": C(x) = 1/2 e^(2x^2) + "const"
+      $
+    +
+      $
+        "general + particular": y(x, c) = (1/2 e^(2x^2) + "const") e^(-2 x^2) 
+        = 1/2 + "const" e^(-2x^2)
+      $
+  ])
+  == Bernouilli equation
+    $
+      = {y' + p(x) y = q(x) y^n, n in RR}
+    $
+    - $n = 0 -> "linear non-homogenous"$
+    - $n = 1 -> "linear homogenous"$
+    - $n in.not {0, 1} -> "non-linear"$
+    $
+      y = 0 or \
+      frac(y', y^n) + p(x) 1/(y^(n-1)) = q(x) <= (1/y^(n-1))' = -(n - 1) y'/y^n \
+      1/(-(n - 1)) (1/y^(n - 1))' + p(x) 1/y^(n - 1) = 1(x)\
+      "let" z(x) = 1/(y^(n - 1)(x))\
+      - 1/(n - 1) z' + p(x) z = 1(x) } "ODE " "ord" = 1 "Linear non-homogeneous"\
+      => z(x; "const") => y(x; "const")
+    $
+  == Ricatti
+    $ y' a(x) y + b(x) y^2 = c(x) $
+    $ y' = "polynomial degree" = z "in" y(x) "with coeffitient" (x) $
+    Generally unsolvable
+
+    Bernouilli: $n = 2 and c(x) = 0$
+    If you know/guess 1 solution of $overline(y)(x)$ of Riccati put
+    $y = overline(y) (x) + z (x)$ in the Riccati equation $->$ Bernoulli "(z(x))"
+  == $n >= 2$ Linear ODE
+    $
+      a_0 (x) y^n + a_1 (x) y^(n -1) + ... + a_(n - 1) (x) y' + a_n (x) y = f(x)
+    $
+    where $a_0, ..., a_n$ are known functions. Suppose $a_0(x) != 0, x in [a, b]$
+    $
+      y^((n)) + alpha_1 (x) y^((n - 1)) + .. + alpha_(n - 1) y' + alpha_n (x) y = B(x)
+    $
+    #text(weight: "bold")[Def.]
+    $
+      &f(x) equiv 0 => B = 0 => "homogeneous linear" n^"th" "order ODE"\
+      &f(x) equiv.not 0 => B = 0 => "nono-homogeneous linear" n^"th" "order ODE"
+    $
