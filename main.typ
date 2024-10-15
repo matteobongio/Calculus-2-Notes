@@ -525,3 +525,60 @@ Extra Exercises
       &f(x) equiv 0 => B = 0 => "homogeneous linear" n^"th" "order ODE"\
       &f(x) equiv.not 0 => B = 0 => "nono-homogeneous linear" n^"th" "order ODE"
     $
+    #set enum(numbering : "1")
+    + General properties of spaces of solutions of such $epsilon_"lin"$
+      Case $f = 0$ (homogeneous)
+      + The set of all solutions of $epsilon_"lin"(f equiv 0)$ s a vector space (over $RR$)
+        $
+          forall y_1, y_2 in L -> k y_1 + lambda y_2 in L
+        $
+        #showybox(
+          title-style: (
+            weight: 900,
+            color: red.darken(40%),
+            sep-thickness: 0pt,
+            align: center
+          ),
+          frame: (
+            title-color: gray.lighten(80%),
+            border-color: gray.darken(90%),
+            body-color: gray.lighten(90%),
+            thickness: (left: 0pt),
+            radius: (top-right: 5pt, bottom-right:5pt, rest: 5pt)
+          ),
+          title: "axioms",
+          [
+            $
+            y_1 + y_2 &= y_2 + y_1\
+            k(y_1 + y_2) &= k y_1 + k y_2\
+            (k + lambda) y_1 &= k y_1 + lambda y_2 \
+            (k lambda) y_1 &= k (lambda y_1)
+            $
+          ]
+        )
+        $
+          cases(
+            bold("Def.") "Linearly dependent": C_1 y_1 + ... + C_k y_k = 0 in L
+            "for not all" c_i = 0,
+            "Linearly independent": sum c_i y_i = 0 -> c_i = 0,
+            "dim"(L) = "max number of linearly independent elements",
+            bold("Rem.") y_1 (x) "and" y_2(x) "are linearly independent if"
+            y_1 (x) = ( "const" != 0 ) y_2 (x)
+          )
+        $
+      + Fundamental theorem about $L$ of #pin(2)$epsilon_"lin" (f equiv 0) } N B (n = 1), forall y_0(x, c) = c "sol"(x) in RR$
+      #pinit-point-to(2)[ord $n >= 1$]
+      \ \ \
+      $forall epsilon_"lin"^n (f = 0)$ has $n$ linearly independent solutions $y_1 (x), ..., y_n(x)$
+      $"dim"_RR L = n$
+
+      $bold("Rem.") "In the space of all" f(x), x in [a, b]$
+      #set enum(start: 3)
+      + The structure of affine space of solutions $"sol"(epsilon_"lin"^n (f != 0))$
+        $y(x) = 0 in.not "sol"(epsilon(f != 0))$
+        $y(x) = y_*(x) + y_0(x, C_1, ..., c_n)$
+      
+
+
+
+
